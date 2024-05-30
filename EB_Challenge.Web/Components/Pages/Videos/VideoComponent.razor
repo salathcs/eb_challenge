@@ -1,0 +1,16 @@
+﻿@inject IConfiguration configuration
+
+<h3>VideoComponent</h3>
+
+<video controls style="object-fit: fill; width:@(Width)px; height:@(Height)px;">
+    <source src="@($"{configuration["videosservice"]}/videos/{Video}")" type="video/mp4">
+</video>
+
+@code {
+    [Parameter]
+    public int Width { get; set; }
+    [Parameter]
+    public int Height { get; set; }
+    [Parameter]
+    public string Video { get; set; } = string.Empty;
+}

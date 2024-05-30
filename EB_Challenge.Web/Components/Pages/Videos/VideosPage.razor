@@ -1,0 +1,66 @@
+﻿@page "/videos"
+@rendermode InteractiveServer
+
+<PageTitle>Videos</PageTitle>
+
+<h1>Videos</h1>
+
+<div class="row">
+    <div class="col-6">
+        <div>
+            <label for="width">Width:</label>
+            <input id="width" @bind="Width" type="number" min="1" max="500" step="1" />px
+        </div>
+
+        <div>
+            <label for="height">Height:</label>
+            <input id="height" @bind="Height" type="number" min="1" max="500" step="10" />px
+        </div>
+
+        <div>
+            <label for="height">Video:</label>
+            <input id="video" @bind="Video" type="text" />
+        </div>
+
+        <div>
+            <button id="add" type="button" class="btn btn-primary" @onclick="AddVideo">Add</button>
+            <button id="reset" type="button" class="btn btn-secondary" @onclick="ResetVideos">Reset</button>
+        </div>
+    </div>
+</div>
+
+<br />
+
+@if (VideoDatas is null || !VideoDatas.Any())
+{
+    <h6>No video added yet</h6>
+}
+else
+{
+    <div class="row">
+        @foreach (var videoData in VideoDatas)
+        { 
+            <div class="col-4">
+                <VideoComponent Height="@videoData.Height" Width="@videoData.Width" Video="@videoData.Video" />
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private int Width { get; set; } = 300;
+    private int Height { get; set; } = 200;
+    private string Video { get; set; } = "myVideo.mp4";
+
+    private List<VideoData> VideoDatas = new List<VideoData>();
+
+    private void AddVideo()
+    {
+        VideoDatas.Add(new VideoData(Width, Height, Video));
+    }
+
+    private void ResetVideos()
+    {
+        VideoDatas.Clear();
+    }
+}
