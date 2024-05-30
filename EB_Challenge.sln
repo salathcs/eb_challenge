@@ -2,13 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EB_Challenge.AppHost", "EB_Challenge.AppHost\EB_Challenge.AppHost.csproj", "{946B4EC1-F206-4D3C-915C-ABAA7346531D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.AppHost", "EB_Challenge.AppHost\EB_Challenge.AppHost.csproj", "{946B4EC1-F206-4D3C-915C-ABAA7346531D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.ServiceDefaults", "EB_Challenge.ServiceDefaults\EB_Challenge.ServiceDefaults.csproj", "{A80C272D-4ACD-427D-85EA-9401AC7C573C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.ApiService", "EB_Challenge.ApiService\EB_Challenge.ApiService.csproj", "{2687CD12-4B3F-403F-B289-BBBF4914E8E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.Web", "EB_Challenge.Web\EB_Challenge.Web.csproj", "{783E9E7C-1B44-4392-A651-E93B49D5CAE4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.VideosService", "EB_Challenge.VideosService\EB_Challenge.VideosService.csproj", "{B51D1252-AF13-412F-850E-6B846FD7F6BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{783E9E7C-1B44-4392-A651-E93B49D5CAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783E9E7C-1B44-4392-A651-E93B49D5CAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783E9E7C-1B44-4392-A651-E93B49D5CAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

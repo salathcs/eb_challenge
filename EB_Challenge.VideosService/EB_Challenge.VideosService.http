@@ -1,0 +1,6 @@
+@EB_Challenge.VideosService_HostAddress = http://localhost:5144
+
+GET {{EB_Challenge.VideosService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
