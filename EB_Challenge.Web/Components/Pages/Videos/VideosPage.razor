@@ -1,6 +1,7 @@
 ﻿@page "/videos"
 @using Microsoft.AspNetCore.SignalR.Client
 @inject IConfiguration configuration
+@inject DomainApiClient client
 @rendermode InteractiveServer
 
 <PageTitle>Videos</PageTitle>
@@ -56,17 +57,20 @@ else
     private int Height { get; set; } = 200;
     private string Video { get; set; } = "myVideo.mp4";
 
-    private List<VideoData> VideoDatas = new List<VideoData>();
+    private List<VideoData> VideoDatas = null!;
 
     protected override async Task OnInitializedAsync()
     {
+        var fetchedData = await client.GetVideos();
+        VideoDatas = fetchedData.ToList();
+
         hubConnection = new HubConnectionBuilder()
             .WithUrl($"{configuration.GetValue<string>("signalrservice")}/videoshub")
             .Build();
 
         hubConnection.On<int, int, string>("SyncAddVideo", async (width, height, video) =>
         {
-            VideoDatas.Add(new VideoData(Width, Height, Video));
+            VideoDatas.Add(new VideoData(width, height, video));
 
             await InvokeAsync(StateHasChanged);
         });
@@ -81,9 +85,19 @@ else
         await hubConnection.StartAsync();
     }
 
-    private Task AddVideo() => hubConnection.SendAsync("AddVideo", Width, Height, Video);
+    private async Task AddVideo()
+    {
+        await client.AddVideo([.. VideoDatas, new VideoData(Width, Height, Video)]);
 
-    private Task ResetVideos() => hubConnection.SendAsync("ResetVideos");
+        await hubConnection.SendAsync("AddVideo", Width, Height, Video);
+    }
+
+    private async Task ResetVideos()
+    {
+        await client.ResetVideos();
+
+        await hubConnection.SendAsync("ResetVideos");
+    }
 
     public void Dispose() => hubConnection.DisposeAsync();
 }
