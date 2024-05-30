@@ -1,4 +1,6 @@
 ﻿@page "/videos"
+@using Microsoft.AspNetCore.SignalR.Client
+@inject IConfiguration configuration
 @rendermode InteractiveServer
 
 <PageTitle>Videos</PageTitle>
@@ -48,19 +50,40 @@ else
 }
 
 @code {
+    private HubConnection hubConnection = null!;
+
     private int Width { get; set; } = 300;
     private int Height { get; set; } = 200;
     private string Video { get; set; } = "myVideo.mp4";
 
     private List<VideoData> VideoDatas = new List<VideoData>();
 
-    private void AddVideo()
+    protected override async Task OnInitializedAsync()
     {
-        VideoDatas.Add(new VideoData(Width, Height, Video));
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl($"{configuration.GetValue<string>("signalrservice")}/videoshub")
+            .Build();
+
+        hubConnection.On<int, int, string>("SyncAddVideo", async (width, height, video) =>
+        {
+            VideoDatas.Add(new VideoData(Width, Height, Video));
+
+            await InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On("SyncResetVideos", async () =>
+        {
+            VideoDatas.Clear();
+
+            await InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
     }
 
-    private void ResetVideos()
-    {
-        VideoDatas.Clear();
-    }
+    private Task AddVideo() => hubConnection.SendAsync("AddVideo", Width, Height, Video);
+
+    private Task ResetVideos() => hubConnection.SendAsync("ResetVideos");
+
+    public void Dispose() => hubConnection.DisposeAsync();
 }

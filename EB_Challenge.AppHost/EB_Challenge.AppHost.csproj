@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EB_Challenge.ApiService\EB_Challenge.ApiService.csproj" />
+    <ProjectReference Include="..\EB_Challenge.SignalRService\EB_Challenge.SignalRService.csproj" />
     <ProjectReference Include="..\EB_Challenge.VideosService\EB_Challenge.VideosService.csproj" />
     <ProjectReference Include="..\EB_Challenge.Web\EB_Challenge.Web.csproj" />
   </ItemGroup>

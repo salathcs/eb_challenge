@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.Web", "EB_Chal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.VideosService", "EB_Challenge.VideosService\EB_Challenge.VideosService.csproj", "{B51D1252-AF13-412F-850E-6B846FD7F6BF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EB_Challenge.SignalRService", "EB_Challenge.SignalRService\EB_Challenge.SignalRService.csproj", "{0A619170-6B64-4E50-AE24-1D190B2C2F1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B51D1252-AF13-412F-850E-6B846FD7F6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A619170-6B64-4E50-AE24-1D190B2C2F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A619170-6B64-4E50-AE24-1D190B2C2F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A619170-6B64-4E50-AE24-1D190B2C2F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A619170-6B64-4E50-AE24-1D190B2C2F1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
